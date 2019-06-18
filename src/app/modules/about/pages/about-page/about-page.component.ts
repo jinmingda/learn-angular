@@ -21,7 +21,7 @@ export class AboutPageComponent implements OnInit {
 
   getText() {
     this.aboutService.getText()
-      .subscribe(content => this.content = content);
+      .subscribe((content: string) => this.content = content);
   }
 
 }
