@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AboutService } from '../../about.service';
+
 @Component({
   selector: 'app-about-page',
   templateUrl: './about-page.component.html',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutPageComponent implements OnInit {
 
-  constructor() { }
+  content: string;
+
+  constructor(
+    private aboutService: AboutService
+  ) { }
 
   ngOnInit() {
+    this.getText();
+  }
+
+  getText() {
+    this.aboutService.getText()
+      .subscribe(content => this.content = content);
   }
 
 }
